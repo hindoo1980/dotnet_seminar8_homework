@@ -1,6 +1,6 @@
 ﻿//  Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
-int[,] arrCreate ()
+   static int[,] arrCreate ()
 
     {
         int m;
@@ -17,43 +17,22 @@ int[,] arrCreate ()
         {
             for (int j = 0; j < nums.GetLength(1) ; j++ )
             {
-            nums[i,j] = rndInt.Next(0, 9);
+                nums[i,j] = rndInt.Next(0, 9);
             }
         }
     
         return nums;
     }
-
-void ColumnSort ()
+    
+    
+    static int[,] arrSort (int[,] numsSorted)
 
     {
-
-        int[,] nums = arrCreate ();
-
-        Console.WriteLine();
-
-        Console.WriteLine("для следующего массива :");
-
-        Console.WriteLine();
-
-
-        for (int i = 0; i < nums.GetLength(0) ; i++ )
-
-        {
-            for (int j = 0; j < nums.GetLength(1) ; j++ )
-            {
-                Console.Write(nums[i,j]+" ");
-            }
-
-        Console.WriteLine();
-
-        }
-
-
+           
         int temp;
 
-        int rowLenght = nums.GetLength(0);
-        int colLenght = nums.GetLength(1);
+        int rowLenght = numsSorted.GetLength(0);
+        int colLenght = numsSorted.GetLength(1);
 
         
         for (int i = 0; i < rowLenght ; i++ )
@@ -64,13 +43,13 @@ void ColumnSort ()
                     for (int k = j + 1; k < colLenght ; k++ )
                     {
 
-                        if (nums[i,j] < nums[i,k])
+                        if (numsSorted[i,j] < numsSorted[i,k])
                         {
-                            temp = nums[i,j];
+                            temp = numsSorted[i,j];
 
-                            nums[i,j] = nums[i,k];
+                            numsSorted[i,j] = numsSorted[i,k];
 
-                            nums[i,k] = temp;
+                            numsSorted[i,k] = temp;
                         }
 
 
@@ -79,13 +58,17 @@ void ColumnSort ()
             }
 
         }
-
-
+    
+        return numsSorted;
+    }
+    
         Console.WriteLine();
 
-        Console.WriteLine("получаем вариант с отсортированными по убыванию строками:");
+        Console.WriteLine("для следующего массива :");
 
         Console.WriteLine();
+        
+        int[,] nums = arrCreate ();
 
 
         for (int i = 0; i < nums.GetLength(0) ; i++ )
@@ -99,7 +82,24 @@ void ColumnSort ()
         Console.WriteLine();
 
         }
-    
-    }
 
- ColumnSort ();
+        Console.WriteLine();
+
+        Console.WriteLine("получаем вариант с отсортированными по убыванию строками:");
+
+        Console.WriteLine();
+        
+        int[,] numsSorted = arrSort(nums);
+        
+
+        for (int i = 0; i < numsSorted.GetLength(0) ; i++ )
+
+        {
+            for (int j = 0; j < numsSorted.GetLength(1) ; j++ )
+            {
+                Console.Write(numsSorted[i,j]+" ");
+            }
+
+        Console.WriteLine();
+
+        }
