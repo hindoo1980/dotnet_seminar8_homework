@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿//  Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
 static int[,] matrixCreate (int m, int n)
 
@@ -11,7 +11,7 @@ static int[,] matrixCreate (int m, int n)
         {
             for (int j = 0; j < matrix.GetLength(1) ; j++ )
             {
-                 matrix[i, j] = rndInt.Next(-17, 17);
+                 matrix[i, j] = rndInt.Next(-18, 18);
             }
         }
       
